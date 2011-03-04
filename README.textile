@@ -4,9 +4,9 @@ p. This is the website for Riverside Ruby. We are also on http://meetup.com/rive
 
 h1. Installation & Running
 
-p. *bundle install*
-*ruby app.rb*
+*bundle install
+*ruby app.rb
 
 h1. Testing
 
-p. *rspec spec*
+*rspec spec
