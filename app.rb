@@ -7,10 +7,14 @@ require 'sinatra'
 require 'haml'
 require 'sass'
 
+get '/' do
+  haml :index
+end
+
+# =start SASS StyleSheets
+
 get '/stylesheet.css' do
   sass :"stylesheets/stylesheet", :style => :compact
 end
 
-get '/' do
-  haml :index
-end
+# =end SASS StyleSheets
