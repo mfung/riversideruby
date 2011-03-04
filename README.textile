@@ -1,3 +1,12 @@
 h1. About
 
 p. This is the website for Riverside Ruby. We are also on http://meetup.com/riversideruby
+
+h1. Installation & Running
+
+p. *bundle install*
+*ruby app.rb*
+
+h1. Testing
+
+p. *rspec spec*
