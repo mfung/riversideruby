@@ -4,6 +4,7 @@ p. This is the website for Riverside Ruby. We are also on http://meetup.com/rive
 
 h1. Installation & Running
 
+gem install bundler
 bundle install
 ruby app.rb
 
