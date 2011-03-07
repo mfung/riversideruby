@@ -13,8 +13,8 @@ end
 
 # =start SASS StyleSheets
 
-get '/stylesheet.css' do
-  sass :"stylesheets/stylesheet", :style => :compact
+get '/css/stylesheet.css' do
+  sass :"stylesheets/stylesheet", :style => :expanded
 end
 
 # =end SASS StyleSheets

@@ -1,5 +1,70 @@
-$blue: #3bbfce
+$custom_font: Helvetica Neue
+$default_font: Helvetica, Arial, Sans-serif
+$base_font: 18
+
+$primary-blue: #507991
+$bright-blue: #10142b
+$red-orange: #cc4823
+
+
 $margin: 16px
+
+// start mixins
+
+// rounded corners usage +round-corners(5px)
+@mixin round-corners($amount)
+  -moz-border-radius: $amount
+  -webkit-border-radius: $amount
+  border-radius: $amount
+  
+// box shadow usage +box-shadow(2px,3px,5px,hsla(0%,0%,0%,.3))
+@mixin box-shadow($horizontal_offset, $vertical_offset, $blur_radius, $color)
+  -moz-box-shadow: $horizontal_offset $vertical_offset $blur_radius $color
+  -webkit-box-shadow: $horizontal_offset $vertical_offset $blur_radius $color
+  box-shadow: $horizontal_offset $vertical_offset $blur_radius $color
+  
+// inner shadow usage +inner-shadow(0,0,5px,hsla(0%,0%,0%,.3))
+@mixin inner-shadow($horizontal_offset, $vertical_offset, $blur_radius, $color)
+  -moz-box-shadow:inset $horizontal_offset $vertical_offset $blur_radius $color
+  -webkit-box-shadow:inset $horizontal_offset $vertical_offset $blur_radius $color
+  box-shadow:inset $horizontal_offset $vertical_offset $blur_radius $color
+
+@mixin clearfix
+  overflow: hidden
+  display: inline-block
+
+// font usage +f([font-size in px], [base font size], [font-weight], [line-height in px], [font-family])
+@mixin f($font_size, $base: $base_font, $weight: normal, $line_height: $font_size, $font_family: $default_font) 
+  font: $weight #{$font_size/$base}em/#{(($line_height/$font_size)*100)}% $font_family
+
+// end mixins
+
+// for high resolution monitors
+@media screen and (min-width: 1200px)
+  #menu-wrapper
+    float: right
+    margin: 0 0 0 0
+
+// for standard vga monitors
+@media screen and (max-width: 600px)
+  #menu-wrapper
+    float: none
+    margin: 0 0 0 0
+    color: red
+    
+// for iPhones & Androids landscape & portrait
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) 
+
+// for iPad landscape & portrait
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+
+#menu-wrapper
+  @include f(18,16,bold,20)
+
+
+.box
+  @include round-corners(8px)
+  @include box-shadow(2px,3px,5px,hsla(0%,0%,0%,.3))
 
 .content-navigation
   border-color: $blue
