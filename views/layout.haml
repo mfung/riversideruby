@@ -45,15 +45,3 @@
     \$(function(){
     \ App.init();
     \});
-    / \$.getJSON("http://api.meetup.com/events?radius=25.0&before=1m&order=time&group_urlname=riversideruby&offset=0&format=json&page=200&fields=&sig_id=10214099&sig=9014a2e8c0e4f1b22ab424b173a6a6da6209b9da", function(meetup) {
-    \$.getJSON('/javascripts/jsontest.json', function(meetup) {
-    \ alert('first worked');
-    \});
-    
-    \$.getJSON('/javascripts/jsontest2.json', function(meetup) {
-    \ alert('second worked');
-    \});
-    
-    \$.getJSON("https://api.meetup.com/events?key=6b47764419734b346f14506a444f302a&sign=true&group_urlname=riversideruby", function(meetup) {
-    \ alert('third worked');
-    \});
