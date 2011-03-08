@@ -11,10 +11,15 @@ get '/' do
   haml :index
 end
 
+# meetup api key 6b47764419734b346f14506a444f302a
 # =start SASS StyleSheets
 
-get '/css/stylesheet.css' do
+get '/css/stylesheet-expanded.css' do
   sass :"stylesheets/stylesheet", :style => :expanded
+end
+
+get '/css/stylesheet.css' do
+  sass :"stylesheets/stylesheet", :style => :compressed
 end
 
 # =end SASS StyleSheets
