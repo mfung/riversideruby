@@ -6,7 +6,7 @@ App.Views.PagesIndex = Backbone.View.extend({
   
   render: function() {
     $('#app').empty();
-    $('#app').html("<h1>RiversideRuby</h1<p>We are a group of programmers, designers, and hackers located in the Inland Empire who share a common bond of Ruby.</p>");
+    $('#app').html("<h1>RiversideRuby</h1<p>We are a group of programmers, designers, and hackers located in the Inland Empire who share a common bond of Ruby. Testing.</p>");
     
     return this;
   }
