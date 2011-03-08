@@ -6,12 +6,18 @@ Bundler.setup
 require 'sinatra'
 require 'haml'
 require 'sass'
+require 'rmeetup'
+require 'time'
 
-get '/' do
-  haml :index
+before '/' do
+  RMeetup::Client.api_key = "6b47764419734b346f14506a444f302a"
+  @meetup = RMeetup::Client.fetch(:events,{:group_urlname => "riversideruby",:before => '1m'}).first.event
 end
 
-# meetup api key 6b47764419734b346f14506a444f302a
+get '/' do
+  haml :layout
+end
+
 # =start SASS StyleSheets
 
 get '/css/stylesheet-expanded.css' do

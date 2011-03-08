@@ -29,8 +29,15 @@
         
         #meeting-wrapper
           #meeting
-            %h1 Next Meeting
+            %h1
+              = Time.parse(@meetup['time']).strftime("Next Meeting (%A %B %d, %Y at %I:%M%p)")
             #meeting-content
+              %a{:href => @meetup['event_url'], :target => '_blank'} 
+                = @meetup['venue_name']
+              %br
+              = @meetup['venue_address1']
+              %br
+              #{@meetup['venue_city']}, #{@meetup['venue_state']} #{@meetup['venue_zip']}
               
         
         %br.clear
