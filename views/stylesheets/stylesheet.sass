@@ -2,9 +2,12 @@ $custom_font: Helvetica Neue
 $default_font: Helvetica, Arial, Sans-serif
 $base_font: 18
 
-$primary-blue: #507991
+$primary-blue: #00507a
 $bright-blue: #10142b
 $red-orange: #cc4823
+$light-gray: #efefef
+$dark-gray: #4c4c4c
+$yellow: #fbff80
 
 
 $margin: 16px
@@ -25,9 +28,9 @@ $margin: 16px
   
 // inner shadow usage +inner-shadow(0,0,5px,hsla(0%,0%,0%,.3))
 @mixin inner-shadow($horizontal_offset, $vertical_offset, $blur_radius, $color)
-  -moz-box-shadow:inset $horizontal_offset $vertical_offset $blur_radius $color
-  -webkit-box-shadow:inset $horizontal_offset $vertical_offset $blur_radius $color
-  box-shadow:inset $horizontal_offset $vertical_offset $blur_radius $color
+  -moz-box-shadow: inset $horizontal_offset $vertical_offset $blur_radius $color
+  -webkit-box-shadow: inset $horizontal_offset $vertical_offset $blur_radius $color
+  box-shadow: inset $horizontal_offset $vertical_offset $blur_radius $color
 
 @mixin clearfix
   overflow: hidden
@@ -36,41 +39,191 @@ $margin: 16px
 // font usage +f([font-size in px], [base font size], [font-weight], [line-height in px], [font-family])
 @mixin f($font_size, $base: $base_font, $weight: normal, $line_height: $font_size, $font_family: $default_font) 
   font: $weight #{$font_size/$base}em/#{(($line_height/$font_size)*100)}% $font_family
+  
+@mixin transition($property, $duration, $function)
+  -webkit-transition: $property $duration $function
+  -moz-transition: $property $duration $function
+  -o-transition: $property $duration $function
+  transition: $property $duration $function
 
 // end mixins
 
-// for high resolution monitors
-@media screen and (min-width: 1200px)
-  #menu-wrapper
-    float: right
-    margin: 0 0 0 0
+// start styles
 
-// for standard vga monitors
-@media screen and (max-width: 600px)
-  #menu-wrapper
-    float: none
-    margin: 0 0 0 0
-    color: red
-    
-// for iPhones & Androids landscape & portrait
-@media screen and (min-device-width: 320px) and (max-device-width: 480px) 
+*
+  margin: 0
+  padding: 0
+  
+.clear
+  clear: both
 
-// for iPad landscape & portrait
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+body
+  background: url(/images/header-bg.png) repeat-x 100% 0  
+  background-color: $light-gray
+  @include f(18,18,normal,20,$default_font)
+  color: $dark-gray
+  
+#wrapper
+  width: 920px
+  margin: 0 auto
+  padding: 0
+  
+#header
+  height: 170px
+  background: url(/images/header-ruby.png) no-repeat top left
+
+#logo
+  width: 396px
 
 #menu-wrapper
-  @include f(18,16,bold,20)
+  display: block
+  background-color: hsla(0%,0%,0%, .50)
+  @include round-corners(5px)
+  padding: 5px 5px 5px 5px
+  
+#menu
+  background-color: hsla(100%,100%,100%, .85)
+  @include round-corners(3px)
+  padding: 5px 8px 3px 8px
+  @include f(12,16,bold,20)
+  text-transform: uppercase
+  text-align: center
 
+  ul
+    display: block
+    list-style: none
+    
+    li
+      display: inline
+    
+    li:before
+      content: "/ "
+      margin: 0 5px 0 5px
+    
+    > li:first-child:before
+      content: ""
+      
+    a:link, a:visited
+      color: $primary-blue
+      text-decoration: none
+      padding: 5px 10px 5px 10px
+      @include transition(all,0.3s,ease-in-out)
+    
+    a:hover, a:focus
+      color: #8d1c20
+      text-decoration: none
+      @include round-corners(8px)
+      background-color: #feffd2
 
-.box
-  @include round-corners(8px)
-  @include box-shadow(2px,3px,5px,hsla(0%,0%,0%,.3))
+#meeting-wrapper
+  display: block
+  float: right
+  margin-top: 4px
 
-.content-navigation
-  border-color: $blue
-  color: darken($blue, 9%)
+  h1
+    color: $yellow
+    margin: 0px
+    padding: 2px 0 8px 0
+    @include f(14,14,bold,12)
+    text-shadow: 1px 2px 2px hsla(0, 0, 0, 0.7)
+    
+  #meeting
+    display: block
+    background-color: hsla(0%,0%,0%, .50)
+    @include round-corners(5px)
+    padding: 5px 5px 5px 5px
+    #meeting-content
+      background-color: hsla(100%,100%,100%, .85)
+      @include round-corners(3px)
+      padding: 5px 8px 3px 8px
+      @include f(12,16,bold,20)
+      
+#container
+  margin-top: 30px
+  
+  #app-wrapper
+    margin-left: 14px
+    width: 610px
+    
+    #app
+      h1
+        @include f(32,18,bold,32,$custom_font)
+        color: #0078a0
+        text-shadow: 0px 2px 1px hsla(0, 0, 0, 0.15)
+        margin-bottom: 10px
+      p
+        line-height: 1.225em
+#sidebar
+  .box
+    h1
+    
+    p
+// end styles
 
-.border
-  padding: $margin / 2
-  margin: $margin / 2
-  border-color: $blue
+// for high resolution monitors
+@media screen and (min-width: 800px)
+  #logo
+    float: left
+    
+  #menu-wrapper
+    float: right
+    width: 460px
+    margin: 5px 0 0 0
+    @include f(18,16,bold,20)
+  #meeting-wrapper
+    width: 470px
+
+// for standard vga monitors
+@media screen and (max-width: 800px)
+  #menu-wrapper
+    clear: both
+    float: none
+    width: 80%
+    margin: -18px 0 auto
+    background-color: hsla(0%,0%,0%, .80)
+    @include f(16,16,bold,20)
+    
+  #meeting-wrapper
+    position: absolute
+    top: 0px
+    left: 400px
+    width: 350px
+
+// for iPad landscape & portrait
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  #menu-wrapper
+    clear: both
+    float: none
+    width: 100%
+    margin: -18px 0 auto
+    background-color: hsla(0%,0%,0%, .80)
+    @include f(14,16,normal,20)
+  #meeting-wrapper
+    position: absolute
+    top: 0px
+    left: 480px
+
+    
+// for iPhones & Androids landscape & portrait
+@media screen and (min-device-width: 320px) and (max-device-width: 480px)
+  #wrapper
+    width: 540px
+    margin: 0
+  #menu-wrapper
+    clear: both
+    float: left
+    width: 120px
+    margin-top: 10px
+  #menu
+    text-align: left
+    ul
+      li
+        display: block
+      li:before
+        content: ""
+        margin: 0
+  #meeting-wrapper
+    float: left
+    width: 350px
+    margin-left: 5px
+    margin-top: 10px

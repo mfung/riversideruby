@@ -4,18 +4,56 @@
     %title Riverside Ruby
     %link{:rel=>'stylesheet', :href=>'/css/stylesheet.css', :type => "text/css"} 
     / / javascripts
-    / %script{:type => "text/javascript", :src  => "/javascripts/jquery.js"}
-    / %script{:type => "text/javascript", :src  => "/javascripts/sammy.js"}
-    / %script{:type => "text/javascript", :src  => "/javascripts/scroll_to.js"}
-    / %script{:type => "text/javascript", :src  => "/javascripts/localscroll.js"}
-    / %script{:type => "text/javascript", :src  => "/javascripts/index.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/libs/jquery.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/libs/json2.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/libs/underscore-min.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/libs/backbone-min.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/application.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/views/pages/pages.js"}
+    %script{:type => "text/javascript", :src  => "/javascripts/controllers/pages.js"}
+ 
   %body
-    #header
-      #logo
-      #menu-wrapper
-        #menu
-          Testing
+    #wrapper
+      #header
+        #logo
+          %img{:src => '/images/logo-hd.png'}
+        #menu-wrapper
+          #menu
+            %ul
+              %li 
+                %a{href: '#'} Home
+              %li
+                %a{href: '#'} Members
+              %li
+                %a{href: '#'} Login
+        
+        #meeting-wrapper
+          #meeting
+            %h1 Next Meeting
+            #meeting-content
+              
+        
+        %br.clear
     
-    #container
-      #app
-    #footer
+      #container
+        #app-wrapper
+          #app
+        #sidebar
+        
+      #footer
+  %script{:type => "text/javascript"}
+    \$(function(){
+    \ App.init();
+    \});
+    / \$.getJSON("http://api.meetup.com/events?radius=25.0&before=1m&order=time&group_urlname=riversideruby&offset=0&format=json&page=200&fields=&sig_id=10214099&sig=9014a2e8c0e4f1b22ab424b173a6a6da6209b9da", function(meetup) {
+    \$.getJSON('/javascripts/jsontest.json', function(meetup) {
+    \ alert('first worked');
+    \});
+    
+    \$.getJSON('/javascripts/jsontest2.json', function(meetup) {
+    \ alert('second worked');
+    \});
+    
+    \$.getJSON("https://api.meetup.com/events?key=6b47764419734b346f14506a444f302a&sign=true&group_urlname=riversideruby", function(meetup) {
+    \ alert('third worked');
+    \});
