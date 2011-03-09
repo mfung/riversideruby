@@ -7,6 +7,7 @@ $bright-blue: #10142b
 $tan: #ca972e
 $red-orange: #cc4823
 $light-gray: #efefef
+$sidebar-gray: #979797
 $dark-gray: #4c4c4c
 $yellow: #fbff80
 
@@ -73,6 +74,9 @@ a:link, a:visited
 
 a:hover, a:focus
   color: darken($tan, 9%)
+
+li
+  margin: .4em 0 .45em 1.125em
   
 #wrapper
   width: 920px
@@ -106,6 +110,7 @@ a:hover, a:focus
     
     li
       display: inline
+      margin: 0
     
     li:before
       content: "/ "
@@ -162,6 +167,7 @@ a:hover, a:focus
   #app-wrapper
     margin-left: 14px
     width: 610px
+    float: left
     
     #app
       @include f(18,18,normal,20,$default_font)
@@ -176,10 +182,17 @@ a:hover, a:focus
         color: $dark-gray
         line-height: 1.225em
 #sidebar
-  .box
-    h1
-    
+  float: right
+  width: 280px
+  .item
+    margin-bottom: 40px
+    h3
+      @include f(24,18,bold,24,$custom_font)
+      color: $sidebar-gray
+      margin-bottom: 5px
     p
+      @include f(14,16,normal,16,$default_font)
+      color: $sidebar-gray
 // end styles
 
 // for high resolution monitors
@@ -204,27 +217,55 @@ a:hover, a:focus
     margin: -18px 0 auto
     background-color: hsla(0%,0%,0%, .80)
     @include f(16,16,bold,20)
-    
+    #menu
+      text-align: left    
+      
   #meeting-wrapper
     position: absolute
     top: 0px
     left: 400px
     width: 350px
+    #meeting
+      #meeting-content
+        img
+          display: none
+    
+  #app-wrapper
+    float: none
+    display: block
+    width: 80%
+    margin-bottom: 20px
+  #sidebar
+    clear: both
+    float: none
+    display: block
+    width: 75%
+    margin: 10px 0 0 10px
+    @include round-corners(8px)
+    background-color: #ffffff
+    padding: 20px
+    .item
+      margin-bottom: 15px
 
 // for iPad landscape & portrait
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px)
   #menu-wrapper
     clear: both
     float: none
-    width: 100%
-    margin: -18px 0 auto
+    display: block
+    position: fixed
+    width: 93%
+    margin: 152px 0 0 0
     background-color: hsla(0%,0%,0%, .80)
     @include f(14,16,normal,20)
+  #menu
+    text-align: left
   #meeting-wrapper
     position: absolute
     top: 0px
     left: 480px
-
+  #container
+    margin-top: 50px
     
 // for iPhones & Androids landscape & portrait
 @media screen and (min-device-width: 320px) and (max-device-width: 480px)
@@ -234,18 +275,51 @@ a:hover, a:focus
   #menu-wrapper
     clear: both
     float: left
-    width: 120px
+    display: block
+    width: 220px
     margin-top: 10px
   #menu
     text-align: left
+    @include f(24,24,bold,28)
     ul
       li
         display: block
+        padding: 10px
+
       li:before
         content: ""
         margin: 0
   #meeting-wrapper
     float: left
-    width: 350px
+    width: 180px
     margin-left: 5px
     margin-top: 10px
+    #meeting
+      #meeting-content
+        img
+          display: none
+          
+  #container
+    clear: both
+    display: block
+    float: none
+    padding-top: 10px
+    
+    #app-wrapper
+      display:  block
+      float:  none
+      margin-top: 10px
+      width: 80%
+      
+    #sidebar
+      clear: both
+      float: none
+      display: block
+      width: 75%
+      margin: 10px 0 0 10px
+      @include round-corners(8px)
+      background-color: #ffffff
+      margin-top: 20px
+      padding: 20px
+      .item
+        margin-bottom: 15px

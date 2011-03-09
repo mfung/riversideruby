@@ -11,3 +11,16 @@ App.Views.PagesIndex = Backbone.View.extend({
     return this;
   }
 });
+
+App.Views.PagesAboutUs = Backbone.View.extend({
+  initialize: function() {
+    _.bindAll(this, 'render');
+    this.render();  
+  },
+  
+  render: function() {
+    $('#app').empty();
+    $('#app').html("<h1>About Us</h1><p>Happy go lucky!</p>");
+  }
+  
+});

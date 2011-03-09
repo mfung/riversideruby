@@ -21,11 +21,13 @@
           #menu
             %ul
               %li 
-                %a{:href => 'http://mengfung.com'} Home
+                %a{:href => '/#'} Home
               %li
-                %a{:href => 'http://mengfung.com'} Members
+                %a{:href => '/#/about-us'} About Us
               %li
-                %a{:href => 'http://mengfung.com'} Login
+                %a{:href => '/#'} Members
+              %li
+                %a{:href => '/#'} Login
         
         #meeting-wrapper
           #meeting
@@ -49,8 +51,23 @@
         #app-wrapper
           #app
         #sidebar
-        
-      #footer
+          .item
+            %h3 Google Group
+            %p 
+              Join the mailing list and ask your questions on the google group at 
+              %a{:href => "http://groups.google.com/group/riversideruby", :target => '_blank'} Riverside Ruby Group
+          .item
+            %h3 IRC
+            %p 
+              Hang out and chat on IRC with us. server: irc.linkline.com channel: #riversideruby
+          .item
+            %h3 Other links
+            %ul
+            %li
+              %a{:href => 'http://meetup.com/riversideruby', :target => '_blank'} Riverside Ruby Meetup
+            
+           
+          #footer
   %script{:type => "text/javascript"}
     \$(function(){
     \ App.init();

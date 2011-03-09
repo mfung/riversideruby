@@ -18,6 +18,9 @@ get '/' do
   haml :layout
 end
 
+
+
+
 # =start SASS StyleSheets
 
 get '/css/stylesheet-expanded.css' do
