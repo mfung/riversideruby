@@ -30,16 +30,19 @@
         #meeting-wrapper
           #meeting
             %h1
-              = Time.parse(@meetup['time']).strftime("Next Meeting (%A %B %d, %Y at %I:%M%p)")
+              = Time.parse(@meetup['time']).strftime("Next Meeting: %B %d, %Y %I:%M%p")
             #meeting-content
+              .right.minimap
+                %img{:src => 'http://maps.google.com/staticmap?center=33.941837,-117.400979&zoom=11&size=250x60&maptype=mobile&markers=33.941837,-117.400979,blues', :width => '250', :height => '60'}
+              
               %a{:href => @meetup['event_url'], :target => '_blank'} 
                 = @meetup['venue_name']
+              [RSVP #{@meetup['rsvpcount']}]
               %br
               = @meetup['venue_address1']
               %br
               #{@meetup['venue_city']}, #{@meetup['venue_state']} #{@meetup['venue_zip']}
-              
-        
+              %br.clear
         %br.clear
     
       #container
