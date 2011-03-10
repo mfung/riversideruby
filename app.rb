@@ -16,8 +16,7 @@ DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rruby.db")
 
 
 ## custom 
-require "#{Dir.pwd}/data/models"
-#require_relative 'sessions'
+require "#{Dir.pwd}/models/users"
 
 before '/' do
   RMeetup::Client.api_key = "6b47764419734b346f14506a444f302a"
@@ -28,7 +27,7 @@ get '/' do
   haml :layout
 end
 
-## start SASS StyleSheets
+## SASS StyleSheets
 
 get '/css/stylesheet-expanded.css' do
   sass :"stylesheets/stylesheet", :style => :expanded
