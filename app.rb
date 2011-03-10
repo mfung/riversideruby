@@ -3,11 +3,21 @@ require 'rubygems'
 require 'bundler'
 Bundler.setup
 
-require 'sinatra'
+
 require 'haml'
 require 'sass'
 require 'rmeetup'
 require 'time'
+require 'dm-core'
+require 'dm-migrations'
+require 'sinatra'
+
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rruby.db")
+
+
+## custom 
+require_relative 'models'
+#require_relative 'sessions'
 
 before '/' do
   RMeetup::Client.api_key = "6b47764419734b346f14506a444f302a"
@@ -18,10 +28,7 @@ get '/' do
   haml :layout
 end
 
-
-
-
-# =start SASS StyleSheets
+## start SASS StyleSheets
 
 get '/css/stylesheet-expanded.css' do
   sass :"stylesheets/stylesheet", :style => :expanded
@@ -31,4 +38,4 @@ get '/css/stylesheet.css' do
   sass :"stylesheets/stylesheet", :style => :compressed
 end
 
-# =end SASS StyleSheets
+## end SASS StyleSheets
