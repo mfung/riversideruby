@@ -16,7 +16,7 @@ DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rruby.db")
 
 
 ## custom 
-require_relative 'models'
+require "#{Dir.pwd}/data/models"
 #require_relative 'sessions'
 
 before '/' do
