@@ -14,7 +14,6 @@ require 'sinatra'
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rruby.db")
 
-
 ## custom 
 require "#{Dir.pwd}/models/users"
 

@@ -12,4 +12,6 @@ describe "Riverside Ruby" do
     last_response.should be_ok
   end
   
+  
+  
 end
