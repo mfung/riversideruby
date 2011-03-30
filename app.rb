@@ -10,6 +10,7 @@ require 'rmeetup'
 require 'time'
 require 'dm-core'
 require 'dm-migrations'
+require 'dm-serializer'
 require 'sinatra'
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rruby.db")

@@ -8,7 +8,7 @@ App.Views.PagesIndex = Backbone.View.extend({
     $('#app').empty();
     $('#app').load('/javascripts/views/pages/show.html', function() {
       var pagedata =  [
-                        {'title':'Riverside Ruby'},
+                        {'h1':'Riverside Ruby'},
                         {'body':"We are a group of programmers, designers, and hackers located in the Inland Empire who share a common bond of Ruby. Testing."}
                       ];
       var page = Tempo.prepare('page').render(pagedata);      
@@ -27,7 +27,7 @@ App.Views.PagesAboutUs = Backbone.View.extend({
     $('#app').empty();
     $('#app').load('/javascripts/views/pages/show.html', function() {
       var pagedata =  [
-                        {'title':'About Us'},
+                        {'h1':'About Us'},
                         {'body':'Happy go lucky!'}
                       ];
       var page = Tempo.prepare('page').render(pagedata);      
