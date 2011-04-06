@@ -34,7 +34,7 @@ end
 
 get '/users/:id' do |id|
   content_type :json
-  user = User.find(params[:id]) 
+  user = User.get(params[:id]) 
   if user
     user.name
   else
