@@ -10,6 +10,8 @@ require 'rmeetup'
 require 'time'
 require 'dm-core'
 require 'dm-migrations'
+require 'dm-validations'
+require 'dm-timestamps'
 require 'sinatra'
 require 'json'
 

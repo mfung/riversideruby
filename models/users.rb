@@ -10,7 +10,7 @@ class User
     
   attr_accessor :password
   
-  def self.to_json(*a)
+  def json(*a)
     {
       'id'              => self.id,
       'email'           => self.email,
@@ -19,10 +19,6 @@ class User
     }.to_json(*a)
   end
   
-  def self.parse_json(body)
-    json = JSON.parse(body)
-    results = { :id => json['id'], :email => json['email'], :name => json['name'], :created_at => json['created_at']}
-  end
 end
 
 DataMapper.finalize
@@ -36,7 +32,7 @@ get '/users/:id' do |id|
   content_type :json
   user = User.get(params[:id]) 
   if user
-    user.name
+    user.json
   else
     error 404, {:error => "user not found"}.to_json 
   end
@@ -50,7 +46,7 @@ post '/users/create' do
   begin
     user = User.new(JSON.parse(request.body.read))
     if user.save
-      user.to_json
+      user.json
     else
       error 400, user.errors.to_json
     end
@@ -61,10 +57,30 @@ end
 
 get '/users/:id/edit' do |id|
   content_type :json
-  {:id => 1, :name => "Meng Fung",:email => "me@mengfung.com",:password => "superPassword",:password_confirmation => "superPassword"}.to_json
+  user = User.get(params[:id]) 
+  if user
+    user.json
+  else
+    error 404, {:error => "user not found"}.to_json 
+  end
 end
 
-post 'users/:id/update' do |id|
+put '/users/:id/update' do |id|
+  content_type :json
+  user = User.get(params[:id])
+  if user
+    begin
+      if user.update(JSON.parse(request.body.read)) 
+        user.json
+      else
+        error 400, e.message.to_json
+      end
+    rescue => e
+      error 400, e.message.to_json
+    end
+  else
+    error 404, "user not found".to_json
+  end
 end 
 
 post 'users/:id/destroy' do |id|
