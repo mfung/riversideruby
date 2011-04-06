@@ -75,6 +75,12 @@ describe "Users" do
       attributes['email'].should  == "me2@mengfung.com"
     end
   end
+  
+  describe "POST on /users/:id/destroy" do
+    it "should update a users active status to false" do
+      
+    end
+  end
 end
 
 describe "Sessions" do

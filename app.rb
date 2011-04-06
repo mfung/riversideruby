@@ -29,6 +29,20 @@ get '/' do
   haml :layout
 end
 
+module Helpers
+  def login_required
+    
+  end
+  
+  def current_user
+    
+  end
+  
+  def logged_in?
+    
+  end
+end
+
 ## SASS StyleSheets
 
 get '/css/stylesheet-expanded.css' do

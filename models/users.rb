@@ -7,6 +7,8 @@ class User
   property :password_salt, String
   property :name, String
   property :created_at, DateTime
+  property :updated_at, DateTime
+  property :active, Boolean
     
   attr_accessor :password
   
