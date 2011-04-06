@@ -11,6 +11,7 @@ require 'time'
 require 'dm-core'
 require 'dm-migrations'
 require 'sinatra'
+require 'json'
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/rruby.db")
 

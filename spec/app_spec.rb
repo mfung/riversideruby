@@ -53,7 +53,7 @@ describe "Users" do
   
   describe "GET on /users/:id/edit" do
     it "should display a users information" do
-      get "/users/1/edit"
+      get "/users/#{@user_id}/edit"
       attributes = JSON.parse(last_response.body)
       attributes["name"].should  == "Meng Fung"
       attributes["email"].should  == "me@mengfung.com"

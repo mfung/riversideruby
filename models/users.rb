@@ -6,11 +6,23 @@ class User
   property :password_hashed, String
   property :password_salt, String
   property :name, String
-  property :description, Text
   property :created_at, DateTime
     
   attr_accessor :password
   
+  def self.to_json(*a)
+    {
+      'id'              => self.id,
+      'email'           => self.email,
+      'name'            => self.name,
+      'created_at'      => self.created_at
+    }.to_json(*a)
+  end
+  
+  def self.parse_json(body)
+    json = JSON.parse(body)
+    results = { :id => json['id'], :email => json['email'], :name => json['name'], :created_at => json['created_at']}
+  end
 end
 
 DataMapper.finalize
@@ -21,10 +33,10 @@ get '/users' do
 end
 
 get '/users/:id' do |id|
-  content_type :text
+  content_type :json
   user = User.find(params[:id]) 
   if user
-    puts user
+    user.name
   else
     error 404, {:error => "user not found"}.to_json 
   end
